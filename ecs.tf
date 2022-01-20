@@ -18,7 +18,7 @@ resource "aws_ecs_task_definition" "test-def" {
   family                   = "testapp-task"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   network_mode             = "awsvpc"
-  requires_compatibilities = ["FARGATE"]
+  requires_compatibilities = ["EC2"]
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
   container_definitions    = data.template_file.testapp.rendered
@@ -29,7 +29,7 @@ resource "aws_ecs_service" "test-service" {
   cluster         = aws_ecs_cluster.test-cluster.id
   task_definition = aws_ecs_task_definition.test-def.arn
   desired_count   = var.app_count
-  launch_type     = "FARGATE"
+  launch_type     = "EC2"
 
   network_configuration {
     security_groups  = [aws_security_group.ecs_sg.id]
