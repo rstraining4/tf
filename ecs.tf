@@ -25,7 +25,7 @@ resource "aws_ecs_task_definition" "test-def" {
   container_definitions    = <<EOF
 [
   {
-    "name": "node-container",
+    "name": "testapp",
     "image": "398250248933.dkr.ecr.ap-south-1.amazonaws.com/myrepo:latest",
     "memory": 1024,
     "cpu": 512,
