@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./app
 RUN npm install
 #RUN chmod +x entrypoint.sh
-#ENTRYPOINT ["/app"]
+ENTRYPOINT ["cd", "/app"]
 # If you are building your code for production
 # RUN npm install --only=production
 # Bundle app source
