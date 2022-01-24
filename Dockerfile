@@ -6,8 +6,8 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 RUN npm install
-RUN chmod +x entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+#RUN chmod +x entrypoint.sh
+ENTRYPOINT ["/"]
 # If you are building your code for production
 # RUN npm install --only=production
 # Bundle app source
