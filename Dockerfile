@@ -12,6 +12,6 @@ ENTRYPOINT ["./app"]
 # RUN npm install --only=production
 # Bundle app source
 #COPY . .
-COPY --from=builder /go/src/build/nodeapp /app
+COPY --from=builder . /app
 EXPOSE 8080
 CMD [ "npm", "start" ]
