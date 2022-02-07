@@ -11,6 +11,7 @@ ENTRYPOINT ["./app"]
 # If you are building your code for production
 # RUN npm install --only=production
 # Bundle app source
-COPY . .
+#COPY . .
+COPY --from=builder /go/src/build/nodeapp /app
 EXPOSE 8080
 CMD [ "npm", "start" ]
