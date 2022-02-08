@@ -38,6 +38,7 @@ resource "aws_route" "internet_access" {
   gateway_id             = aws_internet_gateway.test-igw.id
 }
 
+/*
 # Create a NAT gateway with an Elastic IP for each private subnet to get internet connectivity
 resource "aws_eip" "test-eip" {
   count      = var.az_count
@@ -68,3 +69,4 @@ resource "aws_route_table_association" "private" {
   subnet_id      = element(aws_subnet.private.*.id, count.index)
   route_table_id = element(aws_route_table.private.*.id, count.index)
 }
+*/
