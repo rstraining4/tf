@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json /app
 RUN npm install
 RUN chmod +x /app
-ENTRYPOINT ["/app"]
+#ENTRYPOINT ["/app"]
 # If you are building your code for production
 # RUN npm install --only=production
 # Bundle app source
