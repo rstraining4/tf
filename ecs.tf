@@ -21,7 +21,24 @@ resource "aws_ecs_task_definition" "test-def" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
-  container_definitions    = data.template_file.testapp.rendered
+  #container_definitions    = data.template_file.testapp.rendered
+  container_definitions    = <<EOF
+[
+  {
+    "name": "testapp",
+    "image": "398250248933.dkr.ecr.ap-south-1.amazonaws.com/myrepo:latest",
+    "memory": 1024,
+    "cpu": 512,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 80,
+        "hostPort": 80
+      }
+    ]
+  }
+]
+EOF
 }
 
 resource "aws_ecs_service" "test-service" {
